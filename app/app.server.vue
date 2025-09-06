@@ -5,15 +5,19 @@ import type { View } from "$lib/scripts/core/types.ts"
 const components = views as Record<string, Component>
 const { name, props: remoteProps, render, align } = defineProps<View<unknown>>()
 const view = reactive<View<unknown>>({
-    name,
-    props: remoteProps,
-    render,
-    align,
+  name,
+  props: remoteProps,
+  render,
+  align,
 })
 </script>
 
 <template>
-    <template v-for="key in Object.keys(components)">
-        <component v-if="key === view.name" :is="components[key]"></component>
-    </template>
+  <template v-for="key in Object.keys(components)">
+    <component
+        v-if="key === view.name"
+        :is="components[key]"
+        v-bind="{ view }"
+    ></component>
+  </template>
 </template>
