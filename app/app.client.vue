@@ -2,7 +2,6 @@
 import { type Component, reactive } from "vue"
 import { views } from "./exports.client.ts"
 import type { View } from "$lib/scripts/core/types.ts"
-//eslint-disable-next-line @typescript-eslint/ban-ts-comment
 const components = views as Record<string, Component>
 const { name, props: remoteProps, render, align } = defineProps<View<unknown>>()
 const view = reactive<View<unknown>>({
